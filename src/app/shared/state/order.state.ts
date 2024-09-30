@@ -2,7 +2,7 @@ import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { OrderModel } from "../../core/models/order.model";
 import { Injectable } from "@angular/core";
 import { OrderService } from "../../core/services/order.service";
-import { GetOrders } from "../action/order.action";
+import { GetOrders, SetOrder } from "../action/order.action";
 import { tap } from "rxjs";
 
 export class OrderStateModel {
@@ -50,5 +50,16 @@ export class OrderState {
         complete: () => { this.orderService.skeletonLoader = false; }
       })
     );
+  }
+
+  @Action(SetOrder)
+  setOrder(ctx: StateContext<OrderStateModel>, action: SetOrder) {
+    if (action.payload !== undefined) {
+      const state = ctx.getState();
+      ctx.setState({
+        ...state,
+        orders: [...state.orders, action.payload]
+      });
+    }
   }
 }
