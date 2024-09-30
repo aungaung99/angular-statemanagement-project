@@ -45,5 +45,6 @@ setOrder(ctx: StateContext<OrderStateModel>, action: SetOrder) {
 }
 ```
 
-![image](https://github.com/user-attachments/assets/3ae676d4-468e-41c5-9f10-86211ac98b03)
+![image](https://github.com/user-attachments/assets/a6265bf8-6954-4da5-b458-caa34fd7809a)
+
 
