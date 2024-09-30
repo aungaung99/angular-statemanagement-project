@@ -1,12 +1,28 @@
-<button (click)="onShowData()" type="button">Show Data</button>
-<div>HELL {{orderService.skeletonLoader}}</div>
-<div *ngIf="orders$ | async as orders">
-  <div *ngFor="let order of orders">
-    <p>Order Number: {{ order.OrderId }}</p>
-    <p>Customer Name: {{ order.CusName }}</p>
-    <p>Total Amount: {{ order.NetTotal }}</p>
-    <hr />
+<section class="p-4">
+  <h1 class="font-bold text-2xl mb-3">NGXS State Management Sample</h1>
+  <!-- <div class="mb-2">skeletonLoader {{orderService.skeletonLoader}}</div> -->
+  <div class="grid grid-cols-2 gap-2">
+    <div class="border border-gray-200 rounded-lg p-4 bg-slate-50">
+      <div class="flex justify-between mb-3">
+        <h4 class="font-semibold text-xl mb-2">Parent</h4>
+        <button class="bg-black rounded px-3 py-2 text-white text-sm font-semibold mb-2" (click)="onShowData()"
+          type="button">Show
+          State Data</button>
+      </div>
+      <div *ngIf="orders$ | async as orders"
+        class="scroll-smooth overflow-y-scroll max-h-[330px] flex flex-col gap-4 snap-y snap-mandatory">
+        <div *ngFor="let order of orders" class="border border-gray-200 bg-white rounded-lg p-3 snap-start">
+          <p>Order Number: {{ order.OrderId }}</p>
+          <p>Customer Name: {{ order.CusName }}</p>
+          <p>Total Amount: {{ order.NetTotal }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="border border-gray-200 rounded-lg p-4 bg-slate-50">
+      <app-order-entry></app-order-entry>
+    </div>
   </div>
-</div>
+</section>
+
 
 <router-outlet />
